@@ -12,20 +12,11 @@ int getMinCalculateCount(int n) {
         return 1;
     }
     if (minCalculateCounts[n - 1]) return minCalculateCounts[n - 1];
-    if (n % 2 == 0 && n % 3 != 0)
-        minCalculateCounts[n - 1] =
-            min({ getMinCalculateCount(n - 1), getMinCalculateCount(n / 2) }) + 1; 
-    else if (n % 2 != 0 && n % 3 == 0)
-        minCalculateCounts[n - 1] =
-            min({ getMinCalculateCount(n - 1), getMinCalculateCount(n / 3) }) + 1;
-    else if (n % 2 != 0 && n % 3 != 0)
-        minCalculateCounts[n - 1] = getMinCalculateCount(n - 1) + 1;
-    else
-        minCalculateCounts[n - 1] =
-            min({ getMinCalculateCount(n - 1),
-                getMinCalculateCount(n / 2),
-                getMinCalculateCount(n / 3) }) + 1;
-    return minCalculateCounts[n - 1];
+    int result = getMinCalculateCount(n - 1) + 1;
+    if (n % 2 == 0) result = min(result, getMinCalculateCount(n / 2) + 1);
+    if (n % 3 == 0) result = min(result, getMinCalculateCount(n / 3) + 1);
+    minCalculateCounts[n - 1] = result;
+    return result;
 }
 
 int main() {

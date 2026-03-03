@@ -10,10 +10,10 @@ def solution():
     high = total
     while low <= high:
         mid = (low + high) // 2
-        sum = 0
+        cost = 0
         for budget in budgets:
-            sum += min(budget, mid)
-        if sum <= total:
+            cost += min(budget, mid)
+        if cost <= total:
             answer = max(map(lambda b: min(b, mid), budgets))
             low = mid + 1
         else:

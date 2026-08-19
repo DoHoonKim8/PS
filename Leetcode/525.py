@@ -17,4 +17,3 @@ class Solution:
                 balance[num_zeros - num_ones] = end
                 longest_subarr_lens.append(0)
         return max(longest_subarr_lens)
-        
